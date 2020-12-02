@@ -21,7 +21,7 @@
          </div>
          <div class="searchbox">
           <i class="fas fa-search" @click='search'></i>
-          <input v-model="userInput" type="text" placeholder=' Search'>
+          <input v-model="userInput" type="text" placeholder='Search'>
          </div>
         </header>
 
@@ -30,8 +30,8 @@
            <img :src="'https://image.tmdb.org/t/p/w200'+ film.poster_path" alt="film-image">
            <h1>{{film.title}}</h1>
            <h2>{{film.original_title}}</h2>
-           <h2>{{film.original_language}}<h2>
-           <h2>{{film.vote_average}}<h2>
+           <h2>{{film.original_language}}</h2>
+           <h2>{{film.vote_average}}</h2>
          </div>
         </div>
 
