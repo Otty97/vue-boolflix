@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+    <meta charset="utf-8">
+    <title>Boolflix</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    </head>
+    <body>
+      <div id="root">
+       <header>
+         <img src="img/logo.png" alt="logo"/>
+         <li>
+           <a href="#">Home</a>
+           <a href="#">TV Shows</a>
+           <a href="#">Movies</a>
+           <a href="#">My List</a>
+         </li>
+       </header>
+
+       <div class="cds-container container"  v-for="film in library">
+         <div class="cd">
+           <img :src="film.poster" alt="albums poster">
+           <h3>{{film.title}}</h3>
+           <span class="author">{{film.author}}</span>
+           <span class="year">{{film.year}}</span>
+         </div>
+       </div>
+      </div>
+
+      <script src="js/main.js" charset="utf-8"></script>
+    </body>
+</html>
