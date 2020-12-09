@@ -11,6 +11,7 @@
     </head>
     <body>
       <div id="root">
+
        <header>
          <img src="img/logo.png" alt="logo"/>
          <div class="links">
@@ -20,21 +21,46 @@
            <a href="#">My List</a>
          </div>
          <div class="searchbox">
-          <i class="fas fa-search" @click='search'></i>
           <input v-model="userInput" type="text" placeholder='Search'>
+          <i class="fas fa-search fa-flip-horizontal" @click='search'></i>
          </div>
         </header>
 
-        <div v-for="film in library" class="card">
-         <div class="card-info">
-           <img :src="'https://image.tmdb.org/t/p/w200'+ film.poster_path" alt="film-image">
-           <h1>{{film.title}}</h1>
-           <h2>{{film.original_title}}</h2>
-           <h2>{{film.original_language}}</h2>
-           <h2>{{film.vote_average}}</h2>
-         </div>
-        </div>
+        <main>
+          <div class="cardbox" v-for='film,i in films'>
+            <div class="cardboxFront">
+              <img :src="'https://image.tmdb.org/t/p/w200'+ film.poster_path"  alt="film-image" @error="imgError">
+            </div>
+            <div class="cardboxBack">
+              <p>Titolo: {{film.title}}</p>
+              <span>Titolo Originale:
+                <img :src="'img/svg/'+film.original_language+'.svg'" alt="lang-flag" @error="flagError"></span>
+              </span>
+              <p>Lingua Originale: {{film.original_language}}</p>
+              <span> Voto:
+                <template v-for="vote in starCounter(film)"><i class="fa fa-star" aria-hidden="true"></i></template><template v-for="vote in (5 - starCounter(film))"><i class="fa fa-star-o" aria-hidden="true"></i></template>
+              </span>
+            </div>
+          </div>
 
+          <div class="cardbox" v-for='tv,i in tvSeries'>
+            <div class="cardboxFront">
+              <img :src="'https://image.tmdb.org/t/p/w342'+ tv.poster_path" alt="tvSeries-img" @error="imgError">
+            </div>
+            <div class="cardboxBack">
+              <p>Titolo: {{tv.title}}</p>
+              <span>Titolo Originale:
+                <img :src="'img/svg/'+tv.original_language+'.svg'" alt="lang-flag" @error="flagError"></span>
+              </span>
+              <p>Lingua Originale: {{tv.original_language}}</p>
+              <span> Voto:
+                <template v-for="vote in starCounter(tv)"><i class="fa fa-star" aria-hidden="true"></i></template><template v-for="vote in (5 - starCounter(tv))"><i class="fa fa-star-o" aria-hidden="true"></i></template>
+              </span>
+            </div>
+          </div>
+
+
+        </main>
       </div>
 
       <script src="js/main.js" charset="utf-8"></script>
